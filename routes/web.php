@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+
 
 Route::get('/', function () {
     return view('login');
@@ -21,6 +23,10 @@ Route::get('/admin/barang/edit/{id}', [AdminController::class, 'edit_barang']); 
 Route::get('/admin/barang/delete/{id}', [AdminController::class, 'delete_barang']); //ini untuk menghapus data
 Route::post('/admin/barang/simpan', [AdminController::class, 'simpan_barang']); //ini untuk menyimpan data
 Route::post('/admin/barang/update/{id}', [AdminController::class, 'update_barang']); //ini untuk mengupdate data
+
+// Routing Laporan (Report)
+Route::get('/admin/laporan', [LaporanController::class, 'index']); // Display report page
+Route::get('/admin/laporan/barang', [LaporanController::class, 'cetak_barang']); // Print items report
 
 Route::get('/kasir', function () {
     return view('layouts.master');
